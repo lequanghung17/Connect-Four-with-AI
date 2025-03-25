@@ -2,7 +2,7 @@
 
 ## 1. Minimax Algorithm
 - Minimax là một thuật toán tìm kiếm tối ưu được sử dụng trong các trò chơi đối kháng, trong đó có hai người chơi: người chơi hiện tại (AI) và đối thủ (người chơi). Mục tiêu của thuật toán này là giúp AI tìm ra nước đi tốt nhất bằng cách dự đoán tất cả các tình huống có thể xảy ra trong trò chơi.
-  - Maximizing Player (AI): AAI cố gắng tìm kiếm các nước đi có giá trị cao nhất. Nó sẽ xem xét tất cả các nhánh có thể có và chọn nhánh có điểm số cao nhất. Điểm này được đánh giá dựa trên trạng thái bàn cờ.
+  - Maximizing Player (AI): AI cố gắng tìm kiếm các nước đi có giá trị cao nhất. Nó sẽ xem xét tất cả các nhánh có thể có và chọn nhánh có điểm số cao nhất. Điểm này được đánh giá dựa trên trạng thái bàn cờ.
   - Minimizing Player (Player): Người chơi sẽ cố gắng làm giảm điểm số của AI, tức là người chơi muốn tối thiểu hóa điểm số của AI, vì vậy AI cần dự đoán những nước đi mà người chơi sẽ thực hiện để đánh bại nó.
  
 - Khi AI đang chơi, thuật toán Minimax sẽ xây dựng một cây tìm kiếm trong đó mỗi nút đại diện cho một trạng thái bàn cờ sau một nước đi, và mỗi nhánh đại diện cho một nước đi có thể có. Mỗi cấp độ của cây sẽ luân phiên giữa lượt của AI (maximizing player) và lượt của người chơi (minimizing player).
