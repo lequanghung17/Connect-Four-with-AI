@@ -72,34 +72,35 @@ def evaluate_window(window, piece):
 def score_position(board, piece):
     score = 0
     center_array = [int(i) for i in list(board[:, COLUMN_COUNT//2])]
-    center_count = center_array.count(piece)
+    center_count = center_array.count(piece) #center scoring
     score += center_count * 3
 
-    for r in range(ROW_COUNT):
+    for r in range(ROW_COUNT): #horizontal scoring
         row_array = [int(i) for i in list(board[r,:])]
         for c in range(COLUMN_COUNT-3):
             window = row_array[c:c+WINDOW_LENGTH]
             score += evaluate_window(window, piece)
 
-    for c in range(COLUMN_COUNT):
+    for c in range(COLUMN_COUNT): #vertical scoring
         col_array = [int(i) for i in list(board[:,c])]
         for r in range(ROW_COUNT-3):
             window = col_array[r:r+WINDOW_LENGTH]
             score += evaluate_window(window, piece)
 
-    for r in range(ROW_COUNT-3):
+    for r in range(ROW_COUNT-3): # Positive Diagonal Scoring (bottom-left to top-right)
+
         for c in range(COLUMN_COUNT-3):
             window = [board[r+i][c+i] for i in range(WINDOW_LENGTH)]
             score += evaluate_window(window, piece)
 
-    for r in range(ROW_COUNT-3):
+    for r in range(ROW_COUNT-3): # Negative Diagonal Scoring (top-left to bottom-right)
         for c in range(COLUMN_COUNT-3):
             window = [board[r+3-i][c+i] for i in range(WINDOW_LENGTH)]
             score += evaluate_window(window, piece)
 
     return score
 
-def is_terminal_node(board):
+def is_terminal_node(board):    
     return winning_move(board, PLAYER_PIECE) or winning_move(board, AI_PIECE) or len(get_valid_locations(board)) == 0
 
 def minimax(board, depth, alpha, beta, maximizingPlayer):
@@ -171,8 +172,19 @@ def pick_best_move(board, piece):
 def play_game():
     board = create_board()
     game_over = False
-    turn = random.randint(PLAYER, AI)
+    while True:
+        try:
+            choice = int(input("Who goes first?\n1. Player\n2. AI\nEnter your choice (1-2): "))
+            if choice in [1, 2]:
+                turn = PLAYER if choice == 1 else AI
+                break
+            else:
+                print("Invalid choice. Please enter 1 or 2.")
+        except ValueError:
+            print("Invalid input. Please enter a number (1-2).")
 
+    print("\nGame starting...")
+    print("Player is RED, AI is YELLOW")
     print_board(board)
 
     while not game_over:
