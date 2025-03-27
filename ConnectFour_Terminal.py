@@ -25,13 +25,13 @@ EASY = {
 }
 MEDIUM = {
     'depth': 4,    # Looks 4 moves ahead
-    'multiplier': 1.0,
-    'time_limit': 15     # Normal scoring
+    'multiplier': 1.0,# Normal scoring
+    'time_limit': 15     
 }
 HARD = {
     'depth': 6,    # Looks 6 moves ahead
-    'multiplier': 1.5 ,
-    'time_limit': 10   # Increases AI's scoring
+    'multiplier': 1.5 ,# Increases AI's scoring
+    'time_limit': 10   
 }
 
 def timed_input(prompt, time_limit):
